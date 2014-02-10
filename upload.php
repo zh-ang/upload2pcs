@@ -16,8 +16,6 @@ require(__DIR__."/config.inc.php");
 
 $auth_file = __DIR__ . "/token.json";
 
-$prefix = "/apps/lamp/xzg5a";
-
 if (file_exists($auth_file)) {
 
     $json = file_get_contents($auth_file);
@@ -37,7 +35,7 @@ if (file_exists($auth_file)) {
     $url = "https://c.pcs.baidu.com/rest/2.0/pcs/file";
     $params = array(
         "method"    => "upload",
-        "path"      => "{$prefix}/{$target}",
+        "path"      => rtrim(PCS_PREFIX, "/") . "/{$target}",
         "access_token" => $token,
     );
 
